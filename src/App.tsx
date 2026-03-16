@@ -11,6 +11,7 @@ import Privacidade from "./pages/Privacidade";
 import Termos from "./pages/Termos";
 import Seguranca from "./pages/Seguranca";
 import LGPD from "./pages/LGPD";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/termos" element={<Termos />} />
             <Route path="/seguranca" element={<Seguranca />} />
             <Route path="/lgpd" element={<LGPD />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
