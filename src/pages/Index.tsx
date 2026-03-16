@@ -1,13 +1,39 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from "react";
+import { HeroSection, StatsSection, FeaturesSection, HowSection, FinalCTA } from "../components/landing/HeroFeatures";
+import { InstallSection, PricingSection } from "../components/landing/InstallPricing";
+import { RoadmapSection, FAQSection } from "../components/landing/RoadmapFAQ";
+import ScrollReveal from "../components/ScrollReveal";
 
 const Index = () => {
+  useEffect(() => {
+    // Re-init scroll reveal for landing page content
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <HeroSection />
+      <StatsSection />
+      <FeaturesSection />
+      <HowSection />
+      <InstallSection />
+      <PricingSection />
+      <RoadmapSection />
+      <FAQSection />
+      <FinalCTA />
+    </>
   );
 };
 
